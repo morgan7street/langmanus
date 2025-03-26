@@ -4,46 +4,28 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# OpenRouter Configuration
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-OPENROUTER_HTTP_REFERER = os.getenv("OPENROUTER_HTTP_REFERER", "https://github.com/langmanus/langmanus")
-OPENROUTER_X_TITLE = os.getenv("OPENROUTER_X_TITLE", "LangManus")
-
-# Reasoning LLM configuration (for complex reasoning tasks)
-REASONING_MODEL = os.getenv("REASONING_MODEL", "deepseek/deepseek-chat-v3-0324:free")
-REASONING_BASE_URL = os.getenv("REASONING_BASE_URL", "https://openrouter.ai/api/v1")
-REASONING_API_KEY = os.getenv("REASONING_API_KEY", "your-openrouter-api-key")
-REASONING_AZURE_DEPLOYMENT = os.getenv("REASONING_AZURE_DEPLOYMENT", "deepseek-chat-v3-0324")
-REASONING_HEADERS = {
-    "HTTP-Referer": OPENROUTER_HTTP_REFERER,
-    "X-Title": OPENROUTER_X_TITLE
-}
-
-# Non-reasoning LLM configuration (for straightforward tasks)
-BASIC_MODEL = os.getenv("BASIC_MODEL", "google/gemini-2.5-pro-exp-03-25:free")
-BASIC_BASE_URL = os.getenv("BASIC_BASE_URL", "https://openrouter.ai/api/v1")
-BASIC_API_KEY = os.getenv("BASIC_API_KEY", "your-openrouter-api-key")
-BASIC_AZURE_DEPLOYMENT = os.getenv("BASIC_AZURE_DEPLOYMENT", "gemini-2.5-pro-exp-03-25")
-BASIC_HEADERS = {
-    "HTTP-Referer": OPENROUTER_HTTP_REFERER,
-    "X-Title": OPENROUTER_X_TITLE
-}
-
-# Azure OpenAI配置（按LLM类型区分）
+# Azure OpenAI Configuration
 AZURE_API_BASE = os.getenv("AZURE_API_BASE", "https://langmanus.openai.azure.com/")
 AZURE_API_KEY = os.getenv("AZURE_API_KEY", "your-azure-api-key")
 AZURE_API_VERSION = os.getenv("AZURE_API_VERSION", "2024-02-15-preview")
 
+# Reasoning LLM configuration (for complex reasoning tasks)
+REASONING_MODEL = os.getenv("REASONING_MODEL", "deepseek-chat-v3-0324")
+REASONING_BASE_URL = AZURE_API_BASE
+REASONING_API_KEY = AZURE_API_KEY
+REASONING_AZURE_DEPLOYMENT = os.getenv("REASONING_AZURE_DEPLOYMENT", "deepseek-chat-v3-0324")
+
+# Non-reasoning LLM configuration (for straightforward tasks)
+BASIC_MODEL = os.getenv("BASIC_MODEL", "gpt-4-turbo-preview")
+BASIC_BASE_URL = AZURE_API_BASE
+BASIC_API_KEY = AZURE_API_KEY
+BASIC_AZURE_DEPLOYMENT = os.getenv("BASIC_AZURE_DEPLOYMENT", "gpt-4-turbo-preview")
+
 # Vision-language LLM configuration (for tasks requiring visual understanding)
-VL_MODEL = os.getenv("VL_MODEL", "google/gemini-2.5-pro-exp-03-25:free")
-VL_BASE_URL = os.getenv("VL_BASE_URL", "https://openrouter.ai/api/v1")
-VL_API_KEY = os.getenv("VL_API_KEY", "your-openrouter-api-key")
-VL_AZURE_DEPLOYMENT = os.getenv("VL_AZURE_DEPLOYMENT", "gemini-2.5-pro-exp-03-25")
-VL_HEADERS = {
-    "HTTP-Referer": OPENROUTER_HTTP_REFERER,
-    "X-Title": OPENROUTER_X_TITLE
-}
+VL_MODEL = os.getenv("VL_MODEL", "gpt-4-vision-preview")
+VL_BASE_URL = AZURE_API_BASE
+VL_API_KEY = AZURE_API_KEY
+VL_AZURE_DEPLOYMENT = os.getenv("VL_AZURE_DEPLOYMENT", "gpt-4-vision-preview")
 
 # Chrome Instance configuration
 CHROME_INSTANCE_PATH = os.getenv("CHROME_INSTANCE_PATH", "")
