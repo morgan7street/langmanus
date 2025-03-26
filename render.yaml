@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: langmanus
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: CHROME_HEADLESS
+        value: true
+    healthCheckPath: /health
+    autoDeploy: true 

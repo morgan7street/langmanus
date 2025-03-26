@@ -183,3 +183,11 @@ async def get_team_members():
     except Exception as e:
         logger.error(f"Error getting team members: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/health")
+async def health_check():
+    """
+    Health check endpoint for Render deployment.
+    """
+    return {"status": "healthy"}
