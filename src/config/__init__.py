@@ -8,16 +8,19 @@ from .env import (
     REASONING_BASE_URL,
     REASONING_API_KEY,
     REASONING_AZURE_DEPLOYMENT,
+    REASONING_HEADERS,
     # Basic LLM
     BASIC_MODEL,
     BASIC_BASE_URL,
     BASIC_API_KEY,
     BASIC_AZURE_DEPLOYMENT,
+    BASIC_HEADERS,
     # Vision-language LLM
     VL_MODEL,
     VL_BASE_URL,
     VL_API_KEY,
     VL_AZURE_DEPLOYMENT,
+    VL_HEADERS,
     # Other configurations
     CHROME_INSTANCE_PATH,
     CHROME_HEADLESS,
@@ -79,16 +82,19 @@ __all__ = [
     "REASONING_BASE_URL",
     "REASONING_API_KEY",
     "REASONING_AZURE_DEPLOYMENT",
+    "REASONING_HEADERS",
     # Basic LLM
     "BASIC_MODEL",
     "BASIC_BASE_URL",
     "BASIC_API_KEY",
     "BASIC_AZURE_DEPLOYMENT",
+    "BASIC_HEADERS",
     # Vision-language LLM
     "VL_MODEL",
     "VL_BASE_URL",
     "VL_API_KEY",
     "VL_AZURE_DEPLOYMENT",
+    "VL_HEADERS",
     # Other configurations
     "TEAM_MEMBERS",
     "TEAM_MEMBER_CONFIGRATIONS",
