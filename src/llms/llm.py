@@ -12,12 +12,15 @@ from src.config import (
     REASONING_MODEL,
     REASONING_BASE_URL,
     REASONING_API_KEY,
+    REASONING_HEADERS,
     BASIC_MODEL,
     BASIC_BASE_URL,
     BASIC_API_KEY,
+    BASIC_HEADERS,
     VL_MODEL,
     VL_BASE_URL,
     VL_API_KEY,
+    VL_HEADERS,
     AZURE_API_BASE,
     AZURE_API_KEY,
     AZURE_API_VERSION,
@@ -101,7 +104,6 @@ def create_litellm_model(
     """
     Support various different model's through LiteLLM's capabilities.
     """
-
     llm_kwargs = {"model": model, "temperature": temperature, **kwargs}
 
     if base_url:  # This will handle None or empty string
@@ -109,6 +111,13 @@ def create_litellm_model(
 
     if api_key:  # This will handle None or empty string
         llm_kwargs["api_key"] = api_key
+
+    # Add OpenRouter headers if the model is from OpenRouter
+    if model.startswith(("deepseek/", "google/")):
+        if model.startswith("deepseek/"):
+            llm_kwargs["headers"] = REASONING_HEADERS
+        elif model.startswith("google/"):
+            llm_kwargs["headers"] = BASIC_HEADERS
 
     return ChatLiteLLM(**llm_kwargs)
 
