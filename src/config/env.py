@@ -9,12 +9,12 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 # Reasoning LLM configuration (for complex reasoning tasks)
-REASONING_MODEL = os.getenv("REASONING_MODEL", "openrouter/deepseek/deepseek-chat-v3-0324:free")
+REASONING_MODEL = os.getenv("REASONING_MODEL", "deepseek/deepseek-chat-v3-0324:free")
 REASONING_BASE_URL = OPENROUTER_BASE_URL
 REASONING_API_KEY = OPENROUTER_API_KEY
 
 # Non-reasoning LLM configuration (for straightforward tasks)
-BASIC_MODEL = os.getenv("BASIC_MODEL", "openrouter/google/gemini-2.5-pro-exp-03-25:free")
+BASIC_MODEL = os.getenv("BASIC_MODEL", "google/gemini-2.5-pro-exp-03-25:free")
 BASIC_BASE_URL = OPENROUTER_BASE_URL
 BASIC_API_KEY = OPENROUTER_API_KEY
 
@@ -28,7 +28,7 @@ VL_AZURE_DEPLOYMENT = os.getenv("VL_AZURE_DEPLOYMENT")
 REASONING_AZURE_DEPLOYMENT = os.getenv("REASONING_AZURE_DEPLOYMENT")
 
 # Vision-language LLM configuration (for tasks requiring visual understanding)
-VL_MODEL = os.getenv("VL_MODEL", "openrouter/google/gemini-2.5-pro-exp-03-25:free")
+VL_MODEL = os.getenv("VL_MODEL", "google/gemini-2.5-pro-exp-03-25:free")
 VL_BASE_URL = OPENROUTER_BASE_URL
 VL_API_KEY = OPENROUTER_API_KEY
 
