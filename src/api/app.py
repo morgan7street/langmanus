@@ -9,7 +9,7 @@ from typing import Dict, List, Any, Optional, Union
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 import asyncio
@@ -183,6 +183,56 @@ async def get_team_members():
     except Exception as e:
         logger.error(f"Error getting team members: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    """
+    Root endpoint that returns a simple HTML page.
+    """
+    return """
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>LangManus API</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+                h1 {
+                    color: #333;
+                }
+                .endpoint {
+                    background-color: #f5f5f5;
+                    padding: 15px;
+                    margin: 10px 0;
+                    border-radius: 5px;
+                }
+                code {
+                    background-color: #e0e0e0;
+                    padding: 2px 5px;
+                    border-radius: 3px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Bienvenue sur l'API LangManus</h1>
+            <p>Cette API fournit des endpoints pour interagir avec le système LangManus.</p>
+            <div class="endpoint">
+                <h3>Endpoints disponibles :</h3>
+                <ul>
+                    <li><code>POST /api/chat/stream</code> - Endpoint pour le chat en streaming</li>
+                    <li><code>GET /api/team_members</code> - Liste des membres de l'équipe</li>
+                    <li><code>GET /health</code> - Vérification de l'état du service</li>
+                </ul>
+            </div>
+            <p>Pour plus d'informations, consultez la documentation Swagger à <code>/docs</code></p>
+        </body>
+    </html>
+    """
 
 
 @app.get("/health")
