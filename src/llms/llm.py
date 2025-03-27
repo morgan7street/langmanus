@@ -42,13 +42,13 @@ def create_openai_llm(
     llm_kwargs = {"model": model, "temperature": temperature, **kwargs}
 
     if base_url:
-        llm_kwargs["base_url"] = base_url
+        llm_kwargs["openai_api_base"] = base_url
 
     if api_key:
-        llm_kwargs["api_key"] = api_key
+        llm_kwargs["openai_api_key"] = api_key
 
     if headers:
-        llm_kwargs["headers"] = headers
+        llm_kwargs["extra_headers"] = headers
 
     return ChatOpenAI(**llm_kwargs)
 
