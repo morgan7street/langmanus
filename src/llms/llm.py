@@ -113,10 +113,10 @@ def create_litellm_model(
         llm_kwargs["api_key"] = api_key
 
     # Add OpenRouter headers if the model is from OpenRouter
-    if model.startswith(("deepseek/", "google/")):
-        if model.startswith("deepseek/"):
+    if model.startswith("openrouter/"):
+        if "deepseek" in model:
             llm_kwargs["headers"] = REASONING_HEADERS
-        elif model.startswith("google/"):
+        elif "google" in model:
             llm_kwargs["headers"] = BASIC_HEADERS
 
     return ChatLiteLLM(**llm_kwargs)
