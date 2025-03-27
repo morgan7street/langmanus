@@ -10,7 +10,7 @@ HOST = os.getenv("HOST", "0.0.0.0")
 
 # OpenRouter Configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "your-openrouter-api-key")
-OPENROUTER_BASE_URL = "https://api.openrouter.ai/api/v1"
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_HTTP_REFERER = os.getenv("OPENROUTER_HTTP_REFERER", "https://github.com/langmanus/langmanus")
 OPENROUTER_X_TITLE = os.getenv("OPENROUTER_X_TITLE", "LangManus")
 
